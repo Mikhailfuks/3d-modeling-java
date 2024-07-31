@@ -1,0 +1,76 @@
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Box;
+import javafx.scene.shape.Cylinder;
+import javafx.scene.shape.Sphere;
+import javafx.stage.Stage;
+
+
+
+public class Simple3DScene extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Создаем группу для хранения объектов
+        Group root = new Group();
+
+        // Создаем куб
+        Box box = new Box(100, 100, 100);
+        box.setTranslateX(100);
+        box.setTranslateY(100);
+        box.setTranslateZ(100);
+        box.setMaterial(new javafx.scene.paint.PhongMaterial(Color.BLUE)); // Устанавливаем цвет
+
+        // Создаем сферу
+        Sphere sphere = new Sphere(50);
+        sphere.setTranslateX(-150);
+        sphere.setTranslateY(3000);
+        sphere.setTranslateZ(200);
+        sphere.setMaterial(new javafx.scene.paint.PhongMaterial(Color.RED));
+
+        // Создаем цилиндр
+        Cylinder cylinder = new Cylinder(50, 100);
+        cylinder.setTranslateX(100);
+        cylinder.setTranslateY(-100);
+        cylinder.setTranslateZ(100);
+        cylinder.setMaterial(new javafx.scene.paint.PhongMaterial(Color.GREEN));
+
+       Cube cube=new cube(20,30);
+       cube.setTranslateX(100); 
+       cube.setTranslateY(100); 
+       cube.setTranslateZ(100); 
+       cube.setMaterial(new javafx.scene.paint.PhongMaterial(Color.BROWN));
+
+       pyramid.setTranslateX(100); 
+       pyramid.setTranslateY(100); 
+       pyramide.setTranslateZ(100); 
+       pyramid.setMaterial(new javafx.scene.paint.PhongMaterial(Color.BLACK));
+
+       parallelepiped.setTranslateX(100); 
+       parallelepiped.setTranslateY(100); 
+       parallelepiped.setTranslateZ(100); 
+       parallelepiped.setMaterial(new javafx.scene.paint.PhongMaterial(Color.ORANGE));
+
+        // Добавляем объекты в группу
+        root.getChildren().addAll(box, sphere, cylinder,cube,pyramid);
+
+        // Создаем камеру
+        PerspectiveCamera camera = new PerspectiveCamera(true);
+        camera.setTranslateZ(-500); // Отдаляем камеру
+
+        // Создаем сцену
+        Scene scene = new Scene(root, 600, 400, true, SceneAntialiasing.BALANCED);
+        scene.setCamera(camera);
+
+        primaryStage.setTitle("Simple 3D Scene");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
